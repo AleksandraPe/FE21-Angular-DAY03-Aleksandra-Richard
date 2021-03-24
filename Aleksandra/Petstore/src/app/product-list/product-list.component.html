@@ -1,0 +1,33 @@
+<!-- loop through the array and show the products -->
+
+<div class="container-fluid">
+    <h2 class="mt-5">Products</h2>
+
+    <div class="row row-cols-3 mt-5">
+        <div *ngFor="let product of products ; index as productId">
+            <!-- index will refer to the index of the element, productId is just a parameter name that you can change if you want, but you need to change it in the app.routing.module.ts -->
+
+            <div>
+                <h3>
+                   <a routerLink="products/{{productId}}">
+                    {{ product.name }}
+                   </a> 
+                </h3>
+                <img class="shadow-lg p-3 mb-5 " src="{{ product.image }}" style="width:200px; height:200px">
+
+                <!-- use an *ngIf directive so that Angular only creates the <p> element if the current product has a description -->
+                    <p *ngIf="product.description" class="mb-5">
+                        Description: {{ product.description }}
+                    </p> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- The directive configures the component template to define how the user navigates to the route or URL. When the user clicks a product name, the app displays the details for that product.
+
+The routerLink directive gives the router control over the anchor element. In this case, the route, or URL, contains one fixed products/segment, while the final segment is variable, inserting the id property of the current product. For example, the URL for a product with an id of 1 will be similar to http://localhost:4200/products/1 -->

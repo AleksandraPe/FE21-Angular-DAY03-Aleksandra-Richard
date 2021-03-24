@@ -1,0 +1,14 @@
+<!-- present the information of each product -->
+
+<h2>Product Details</h2>
+
+    <div *ngIf="product">
+    <img src="{{ product.image }}" style="width:200px; height:200px">
+    <h3>{{ product.name }}</h3>
+    <h4>{{ product.price | currency }}</h4>
+    <p>{{ product.description }}</p>
+
+    <!-- "Buy" button that adds the current product to the cart -->
+    <button (click)="addToCart(product)" class="px-4 btn-outline-success">Buy</button>
+
+    </div>

@@ -1,0 +1,40 @@
+<!-- update the html part to show the items array -->
+<h3 class="mt-5 fw-bold">Cart</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+    <span>{{ item.name }} </span>
+    <span>{{ item.price | currency }}</span>
+</div>
+
+<div class="" style="width: 30%">
+  <div class="mt-5 shadow-lg p-3 mb-5">
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div class="mb-3">
+      <label for="name" class="form-label">
+        Name
+      </label>
+      <input id="name" type="text" formControlName="name" class="ms-4">
+    </div>
+   
+    <div class="mb-3">
+      <label for="address" class="form-label">
+        Address
+      </label>
+      <input id="address" type="text" formControlName="address"  class="ms-2">
+    </div>
+   
+    <button class="button bg-info p-2 mt-3" type="submit">Purchase</button>
+
+   </form>
+   </div>
+  </div>
+
+
+<!-- 
+1. We use a formGroup property binding to bind the checkoutForm to the form tag in the template. Additionally we include a "Purchase" button to submit the form. 
+
+2. On the form tag, use an ngSubmit event binding to listen for the form submission and call the onSubmit() method with the checkoutForm value.
+
+3. Add input fields for name and address. Use the formControlName attribute binding to bind the checkoutForm form controls for name and address to their input fields. 
+-->
